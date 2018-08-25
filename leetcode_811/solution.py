@@ -42,6 +42,6 @@ class Solution:
         return ['{} {}'.format(count, domain) for domain, count in counter.items()]
 
 if __name__ == '__main__':
-    cpdomains = ["9001 discuss.leetcode.com"]
+    cpdomains = ["9001 discuss.leetcode_121.com"]
     ret = Solution().subdomainVisits(cpdomains)
     print(ret)
