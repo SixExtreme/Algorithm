@@ -15,8 +15,3 @@ class Solution:
                 if delta > profit:
                     profit = delta
         return profit
-
-
-if __name__ == '__main__':
-    prices = [2, 1, 4]
-    print(Solution().maxProfit(prices))
