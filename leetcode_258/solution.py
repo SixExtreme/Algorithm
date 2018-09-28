@@ -11,9 +11,9 @@ class Solution:
         #         _num //= 10
         #     num = acc
         # return num
-        if num < 10:
+        if num < 1:
             return num
-        return num % 9 or num // 9
+        return 1 + (num - 1) % 9
 
 
 if __name__ == '__main__':
