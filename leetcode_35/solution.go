@@ -2,16 +2,36 @@ package main
 
 import "fmt"
 
+//func searchInsert(nums []int, target int) int {
+//	i := 0
+//	for i < len(nums) {
+//		if nums[i] < target {
+//			i++
+//		} else {
+//			break
+//		}
+//	}
+//	return i
+//}
+
 func searchInsert(nums []int, target int) int {
-	i := 0
-	for i < len(nums) {
-		if nums[i] < target {
-			i++
+	if len(nums) == 0 {
+		return 0
+	}
+
+	l, h := 0, len(nums) - 1
+	for l <= h {
+		m := (l + h) / 2
+		if nums[m] == target {
+			return m
+		} else if nums[m] > target {
+			h = m - 1
 		} else {
-			break
+			l = m + 1
 		}
 	}
-	return i
+
+	return l
 }
 
 func main()  {

@@ -11,7 +11,10 @@ func plusOne(digits []int) []int {
 			return digits
 		}
 	}
-	return append([]int{1}, digits...)
+
+	res := make([]int, len(digits) + 1)
+	res[0] = 1
+	return res
 }
 
 func main() {
