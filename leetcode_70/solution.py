@@ -6,10 +6,10 @@ class Solution:
         """
         if n <= 2:
             return n
-        dp0, dp1 = 1, 2
+        dp1, dp2 = 1, 2
         for i in range(2, n):
-            dp0, dp1 = dp1, dp0 + dp1
-        return dp1
+            dp1, dp2 = dp2, dp1 + dp2
+        return dp2
 
 
 if __name__ == '__main__':
