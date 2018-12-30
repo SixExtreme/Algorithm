@@ -7,7 +7,7 @@ class Solution:
         count, major = 1, nums[0]
         for i in range(1, len(nums)):
             if count == 0:
-                count += 1
+                count = 1
                 major = nums[i]
             else:
                 if nums[i] != major:
