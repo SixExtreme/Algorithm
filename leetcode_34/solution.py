@@ -44,20 +44,47 @@ class Solution:
         return i if nums[i] == target else -1
 
     def searchRange(self, nums: List[int], target: int) -> List[int]:
+        # if len(nums) == 0:
+        #     return [-1, -1]
+        # if len(nums) == 1:
+        #     return [0, 0] if nums[0] == target else [-1, -1]
+        #
+        # left = self.searchFirst(nums, target)
+        # if left == -1:
+        #     return [-1, -1]
+        # return [left, self.searchLast(nums, target)]
+
         if len(nums) == 0:
             return [-1, -1]
-        if len(nums) == 1:
-            return [0, 0] if nums[0] == target else [-1, -1]
+        # if len(nums) == 1:
+        #     return [0, 0] if nums[0] == target else [-1, -1]
 
-        left = self.searchFirst(nums, target)
-        if left == -1:
+        i, j = 0, len(nums) - 1
+        while i < j:
+            mid = i + (j - i) // 2
+            if nums[mid] < target:
+                i = mid + 1
+            else:
+                j = mid
+        if nums[j] != target:
             return [-1, -1]
-        return [left, self.searchLast(nums, target)]
+        left = j
+        j = len(nums) - 1
+        while i < j:
+            mid = i + (j - i) // 2 + 1
+            if nums[mid] > target:
+                j = mid - 1
+            else:
+                i = mid
+        right = i
+        return [left, right]
 
 
 
 
 if __name__ == '__main__':
+    print(Solution().searchRange([0], 1))
+    print(Solution().searchRange([1], 1))
     # print(Solution().searchRange([2, 2], 2))
     # print(Solution().searchRange([1, 4], 4))
     # print(Solution().searchRange([5, 7, 7, 8, 8, 10], 8))
@@ -72,11 +99,11 @@ if __name__ == '__main__':
     #
     # print("---")
 
-    print(Solution().searchLast([], 9))
-    print(Solution().searchLast([9, 10], 9))
-    print(Solution().searchLast([8, 9], 9))
-    print(Solution().searchLast([9, 9, 10], 9))
-    print(Solution().searchLast([8, 9, 9], 9))
-    print(Solution().searchLast([8, 9, 9, 10], 9))
+    # print(Solution().searchLast([], 9))
+    # print(Solution().searchLast([9, 10], 9))
+    # print(Solution().searchLast([8, 9], 9))
+    # print(Solution().searchLast([9, 9, 10], 9))
+    # print(Solution().searchLast([8, 9, 9], 9))
+    # print(Solution().searchLast([8, 9, 9, 10], 9))
 
 
