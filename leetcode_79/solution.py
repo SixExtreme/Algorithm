@@ -3,34 +3,28 @@ from collections import deque
 
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
-        directs = [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+        def bfs(i: int, j: int, board: List[List[str]], word: str) -> bool:
+            m, n = len(board), len(board[0]) 
+            p = 0
+            visit, queue = {(i, j)}, deque([(i, j)])
+            while p < len(word) and len(queue) > 0:
+                len_queue = len(queue)
+                
 
-        def bfs(x: int, y: int) -> bool:
-            pos: int = 1
-            visit = {(x, y)}
-            m: int = len(board)
-            n: int = len(board[0])
+            
+            return p == len(word)
 
-            while pos < len(word):
-                has_next = False
-                for (dx, dy) in directs:
-                    p, q = x + dx, y + dy
-                    if 0 <= p < m and 0 <= q < n and board[p][q] == word[pos]:
-                        pos, x, y = pos + 1, p, q
-                        visit.add((p, q))
-                        break
-                if not has_next:
-                    break
-
-            return pos == len(word)
-
-        for i in range(len(board)):
-            for j in range(len(board[i])):
+        if len(word) == 0:
+            return True
+        m, n = len(board), len(board[0])
+        for i in range(m):
+            for j in range(n):
                 if board[i][j] != word[0]:
                     continue
                 if bfs(i, j, board, word):
                     return True
         return False
+
 
 
 def test_solution():
